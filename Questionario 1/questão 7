@@ -1,0 +1,45 @@
+'''
+Divisores Primos
+Números primos gêmeos são pares de números primos (p1
+, p2
+) tais que p2=p1+2
+.
+
+Implemente uma função chamada primos_gemeos que recebe um número inteiro n
+ e retorna os n
+ primeiros pares de números primos gêmeos, conforme formatação indicada abaixo.
+
+
+
+Entrada:
+Um número inteiro 0≤n≤80
+.
+
+Saída da Função:
+Uma lista com os n
+ primeiros pares de números primos gêmeos, sendo cada par definido em uma tupla.
+
+
+
+Observações: Implemente apenas a função, o código de teste se encarrega de ler a entrada, chamar a função e imprimir o resultado.
+
+For example:
+'''
+
+
+def eh_primo(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def primos_gemeos(n):
+    pares = []
+    i = 2
+    while len(pares) < n:
+        if eh_primo(i) and eh_primo(i + 2):
+            pares.append((i, i+2))
+        i += 1
+    return pares

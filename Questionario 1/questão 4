@@ -1,0 +1,45 @@
+'''Qual mês é?
+Meses podem ser identificados por números ou pelos próprio nome. Dado um valor inteiro m
+ identificando um mês, indique o nome deste mês do ano.
+
+Entrada
+A entrada contém uma linha com um valor inteiro 1≤m≤12
+.
+
+Saída
+O nome do mês indicado pelo número lido, por extenso e com a primeira letra maiúscula. Use apenas caracteres ASCII.
+
+For example:
+
+m = int(input())
+if m == 1:
+    print("Janeiro")
+elif m == 2:
+    print("Fevereiro")
+elif m == 3:
+    print("Marco")
+elif m == 4:
+    print("Abril")
+elif m == 5:
+    print("Maio")
+elif m == 6:
+    print("Junho")
+elif m == 7:
+    print("Julho")
+elif m == 8:
+    print("Augusto")
+elif m == 9:
+    print("Setembro")
+elif m == 10:
+    print("Outubro")
+elif m == 11:
+    print("Novembro")
+elif m == 12:
+    print("Dezembro")
+'''
+meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+
+mes = int(input())
+nome_mes = meses[mes-1]
+
+print(nome_mes)

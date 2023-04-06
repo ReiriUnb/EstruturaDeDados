@@ -1,0 +1,24 @@
+'''mplemente a função frequencia, que recebe uma mensagem e retorna o caracter mais comum dessa mensagem. Em caso de empate, retorne o primeiro caracter mais frequente
+
+Entrada:
+Sequência de caracteres em uma linha.
+
+Saída:
+O caracter com maior frequência.
+
+Observações: Implemente apenas a função, o código de teste se encarrega de ler a entrada, chamar a função e imprimir o resultado.'''
+
+def frequencia(frases):
+    frequencias = {}
+    for caracter in frases:
+        if caracter in frequencias:
+            frequencias[caracter] += 1
+        else:
+            frequencias[caracter] = 1
+    maior_frequencia = 0
+    caracter_mais_comum = ''
+    for caracter, frequencia in frequencias.items():
+        if frequencia > maior_frequencia:
+            maior_frequencia = frequencia
+            caracter_mais_comum = caracter
+    return caracter_mais_comum

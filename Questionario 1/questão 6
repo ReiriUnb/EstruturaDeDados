@@ -1,0 +1,35 @@
+tamanho_arquivo = int(input())
+x = int(input())
+taxa_transferencia = [int(input()) for _ in range(x)] 
+
+media_transferencia = sum(taxa_transferencia) / len(taxa_transferencia)
+
+tempo_total = tamanho_arquivo / media_transferencia
+tempo_total_arredondado = round(tempo_total)
+
+print("Transmitindo", tamanho_arquivo, "bytes...")
+
+bytes_transmitidos = 0
+tempo_decorrido = 0
+
+while bytes_transmitidos < tamanho_arquivo:
+
+    bytes_nesse_intervalo = media_transferencia * 5
+
+    if bytes_transmitidos + bytes_nesse_intervalo > tamanho_arquivo:
+        bytes_nesse_intervalo = tamanho_arquivo - bytes_transmitidos
+
+    bytes_transmitidos += bytes_nesse_intervalo
+
+    tempo_restante = (tamanho_arquivo - bytes_transmitidos) / media_transferencia
+    tempo_restante_arredondado = round(tempo_restante)
+
+    tempo_decorrido += 4
+
+    if tempo_decorrido % 4 == 0:
+        if bytes_nesse_intervalo == 0:
+            print("Pendente")
+        else:
+            print("Tempo restante:", tempo_restante_arredondado, "segundos.")
+
+print("Tempo total:", tempo_total_arredondado, "segundos.")

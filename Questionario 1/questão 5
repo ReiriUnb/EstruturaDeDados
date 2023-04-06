@@ -1,0 +1,52 @@
+'''
+A raposa e o coelho
+Em um grande campo viviam um coelho e uma raposa. A raposa quer devorar o coelho, enquanto o coelho quer fugir da raposa por um dos muitos buracos que possui no campo. Tanto a raposa quanto o coelho não são especialistas em matemática, mas também não são completamente estúpidos.
+
+O coelho escolhe um buraco e segue em direção a ele em linha reta e a uma velocidade constante. A raposa, que é muito boa em leitura de linguagem corporal, segue no mesmo instante em direção ao mesmo buraco escolhido pelo coelho, em linha reta e a uma velocidade igual ao dobro da velocidade do coelho. Se a raposa atinge o buraco primeiro ela devora o coelho, caso contrário o coelho escapa. Seu objetivo é escolher um buraco pelo qual o coelho possa escapar, se tal buraco existir.
+
+
+
+Entrada:
+A entrada consiste de vários casos de teste. A primeira linha de cada caso contém um inteiro n
+  (0≤n≤1000
+) que denota o número de buracos presentes no campo. A segunda linha apresenta dois números reais, separados por espaço, indicando as coordenadas (x, y) do coelho, e a terceira linha dois valores reais, separados por espaço, com as coordenadas (x, y) da raposa. Na sequência, são apresentadas n
+ linhas, cada uma indicando a posição dos buracos no mesmo formato: dois números reais, separados por espaço, com as coordenadas (x, y). Todas as distâncias estão em metros, e sempre −10000≤x,y≤10000
+.
+
+
+
+Saída:
+Para cada caso, se o coelho puder fugir, a saída deve conter a frase "O coelho pode escapar pelo buraco (x, y)." (atenção ao espaço após a vírgula!), indicando as coordenadas exatas do buraco em questão, com 3 casas decimais. Caso contrário, a saída deve conter a frase "O coelho não pode escapar."
+
+
+
+Observação:
+Se o coelho puder escapar por mais de um buraco, mostre na saída o buraco que aparece em primeiro lugar na entrada.
+
+'''
+import math
+
+while True:
+    try:
+        n = int(input())
+        coelho = list(map(float, input().split()))
+        raposa = list(map(float, input().split()))
+        buracos = [list(map(float, input().split())) for _ in range(n)]
+        
+        escape = False
+        for buraco in buracos:
+            d_coelho_buraco = math.sqrt((buraco[0]-coelho[0])**2 + (buraco[1]-coelho[1])**2)
+            d_raposa_buraco = math.sqrt((buraco[0]-raposa[0])**2 + (buraco[1]-raposa[1])**2)
+            t_coelho = d_coelho_buraco / 5  # velocidade do coelho é 5 m/s
+            t_raposa = d_raposa_buraco / 10  # velocidade da raposa é 10 m/s
+            
+            if t_coelho <= t_raposa:
+                escape = True
+                print(f"O coelho pode escapar pelo buraco ({buraco[0]:.3f}, {buraco[1]:.3f}).")
+                break
+        
+        if not escape:
+            print("O coelho nao pode escapar.")
+    
+    except:
+        break
